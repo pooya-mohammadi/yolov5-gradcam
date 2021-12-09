@@ -1,7 +1,7 @@
 # YOLO-V5 GRADCAM
 
-I always wanted to know to which part of an object the object-detection model pays more attention. So I searched for it, but I didn't find any for Yolov5.
-Here is my implementation of Grad-cam for YOLO-v5. To load the model I used the yolov5's main codes and for computing GradCam I used the codes from the gradcam_plus_plus-pytorch repository.
+I constantly desired to know to which part of an object the object-detection model pays more attention. So I searched for it, but I didn't find any for Yolov5.
+Here is my implementation of Grad-cam for YOLO-v5. To load the model I used the yolov5's main codes, and for computing GradCam I used the codes from the gradcam_plus_plus-pytorch repository.
 Please follow my GitHub account and give a ⭐ if this functionality benefits your research and projects.
 
 

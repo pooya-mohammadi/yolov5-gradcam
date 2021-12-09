@@ -11,6 +11,7 @@ from deep_utils import show_destroy_cv2, Box, split_extension
 parser = argparse.ArgumentParser()
 parser.add_argument('--model-path', type=str, default="yolov5s.pt", help='Path to the model')
 parser.add_argument('--img-path', type=str, default='images/eagle.jpg', help='input image path')
+parser.add_argument('--output-dir', type=str, default='outputs', help='output dir')
 parser.add_argument('--img-size', type=int, default=640, help="input image size")
 parser.add_argument('--target-layer', type=str, default='model_23_cv3_act',
                     help='The layer hierarchical address to which gradcam will applied,'
@@ -76,8 +77,9 @@ def main():
         images.append(res_img)
     final_image = concat_images(images)
     img_name = split_extension(os.path.split(args.img_path)[-1], suffix='-res')
-    output_path = f'outputs/{img_name}'
-    os.makedirs("outputs", exist_ok=True)
+    output_path = f'{args.output_dir}/{img_name}'
+    os.makedirs(args.output_dir, exist_ok=True)
+    print(f'[INFO] Saving image at {output_path}')
     cv2.imwrite(output_path, final_image)
     show_destroy_cv2(final_image)
 

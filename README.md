@@ -9,9 +9,12 @@ Please follow my GitHub account and give a ⭐ if this functionality benefits yo
 `pip install -r requirements.txt`
 
 ## Infer
-`python main.py --model-path yolov5.pt --img-path images/cat-dog.jpg`
+`python main.py --model-path yolov5s.pt --img-path images/cat-dog.jpg --output-dir outputs`
 
 **NOTE**: If you don't have any weights and just want to test, don't change the model-path argument. The yolov5s model will be automatically downloaded thanks to the download function from yolov5. 
+
+**NOTE**: For more input arguments, check out the main.py or run the following command:
+`python main.py -h`
 
 ## Examples
 <img src="https://raw.githubusercontent.com/pooya-mohammadi/yolov5-gradcam/master/outputs/eagle-res.jpg" alt="cat&dog" height="300" width="1200">

@@ -5,7 +5,7 @@ import numpy as np
 from models.gradcam import YOLOV5GradCAM
 from models.yolo_v5_object_detector import YOLOV5TorchObjectDetector
 import cv2
-from deep_utils import show_destroy_cv2, Box, split_extension
+from deep_utils import Box, split_extension
 
 # Arguments
 parser = argparse.ArgumentParser()
@@ -18,6 +18,8 @@ parser.add_argument('--target-layer', type=str, default='model_23_cv3_act',
                          ' the names should be separated by underline')
 parser.add_argument('--method', type=str, default='gradcam', help='gradcam or gradcampp')
 parser.add_argument('--device', type=str, default='cpu', help='cuda or cpu')
+parser.add_argument('--names', type=str, default=None,
+                    help='The name of the classes. The default is set to None and is set to coco classes. Provide your custom names as follow: object1,object2,object3')
 
 args = parser.parse_args()
 
@@ -54,12 +56,12 @@ def concat_images(images):
 
 
 def main():
-    global device, model
     device = args.device
     input_size = (args.img_size, args.img_size)
     img = cv2.imread(args.img_path)
     print('[INFO] Loading the model')
-    model = YOLOV5TorchObjectDetector(args.model_path, 'cpu', img_size=input_size)
+    model = YOLOV5TorchObjectDetector(args.model_path, device, img_size=input_size,
+                                      names=None if args.names is None else args.names.strip().split(","))
     torch_img = model.preprocessing(img[..., ::-1])
     if args.method == 'gradcam':
         saliency_method = YOLOV5GradCAM(model=model, layer_name=args.target_layer, img_size=input_size)
@@ -79,9 +81,8 @@ def main():
     img_name = split_extension(os.path.split(args.img_path)[-1], suffix='-res')
     output_path = f'{args.output_dir}/{img_name}'
     os.makedirs(args.output_dir, exist_ok=True)
-    print(f'[INFO] Saving image at {output_path}')
+    print(f'[INFO] Saving the final image at {output_path}')
     cv2.imwrite(output_path, final_image)
-    show_destroy_cv2(final_image)
 
 
 if __name__ == '__main__':

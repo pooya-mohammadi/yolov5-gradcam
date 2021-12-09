@@ -17,6 +17,8 @@ Please follow my GitHub account and give a ⭐ if this functionality benefits yo
 `python main.py -h`
 
 ## Examples
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pooya-mohammadi/yolov5-gradcam/blob/master/main.ipynb)
+
 <img src="https://raw.githubusercontent.com/pooya-mohammadi/yolov5-gradcam/master/outputs/eagle-res.jpg" alt="cat&dog" height="300" width="1200">
 <img src="https://raw.githubusercontent.com/pooya-mohammadi/yolov5-gradcam/master/outputs/cat-dog-res.jpg" alt="cat&dog" height="300" width="1200">
 <img src="https://raw.githubusercontent.com/pooya-mohammadi/yolov5-gradcam/master/outputs/dog-res.jpg" alt="cat&dog" height="300" width="1200">
@@ -27,6 +29,7 @@ I checked the code, but I couldn't find an explanation for why the truck's heatm
 ## TO Do
 1. Add GradCam++
 2. Add ScoreCam
+3. Add the functionality to the deep_utils library
 
 # References
 1. https://github.com/1Konny/gradcam_plus_plus-pytorch

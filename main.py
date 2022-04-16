@@ -10,7 +10,7 @@ from deep_utils import Box, split_extension
 # Arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model-path', type=str, default="yolov5s.pt", help='Path to the model')
-parser.add_argument('--img-path', type=str, default='images/eagle.jpg', help='input image path')
+parser.add_argument('--img-path', type=str, default='images/', help='input image path')
 parser.add_argument('--output-dir', type=str, default='outputs', help='output dir')
 parser.add_argument('--img-size', type=int, default=640, help="input image size")
 parser.add_argument('--target-layer', type=str, default='model_23_cv3_act',
@@ -88,7 +88,8 @@ def main(img_path):
 if __name__ == '__main__':
     if os.path.isdir(args.img_path):
         img_list = os.listdir(args.img_path)
+        print(img_list)
         for item in img_list:
-            main(item)
+            main(os.path.join( args.img_path ,item))
     else:
         main(args.img_path)

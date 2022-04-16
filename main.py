@@ -86,7 +86,7 @@ def main(img_path):
 
 
 if __name__ == '__main__':
-    if os.path(args.img_path).is_dir():
+    if os. os.path.isdir(args.img_path):
         img_list = os.listdir(args.img_path)
         for item in img_list:
             main(item)

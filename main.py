@@ -10,7 +10,7 @@ from deep_utils import Box, split_extension
 # Arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model-path', type=str, default="yolov5s.pt", help='Path to the model')
-parser.add_argument('--img-path', type=str, default='images/eagle.jpg', help='input image path')
+parser.add_argument('--img-path', type=str, default='images/', help='input image path')
 parser.add_argument('--output-dir', type=str, default='outputs', help='output dir')
 parser.add_argument('--img-size', type=int, default=640, help="input image size")
 parser.add_argument('--target-layer', type=str, default='model_23_cv3_act',
@@ -55,10 +55,10 @@ def concat_images(images):
     return base_img
 
 
-def main():
+def main(img_path):
     device = args.device
     input_size = (args.img_size, args.img_size)
-    img = cv2.imread(args.img_path)
+    img = cv2.imread(img_path)
     print('[INFO] Loading the model')
     model = YOLOV5TorchObjectDetector(args.model_path, device, img_size=input_size,
                                       names=None if args.names is None else args.names.strip().split(","))
@@ -78,7 +78,7 @@ def main():
         res_img = put_text_box(bbox, cls_name, res_img)
         images.append(res_img)
     final_image = concat_images(images)
-    img_name = split_extension(os.path.split(args.img_path)[-1], suffix='-res')
+    img_name = split_extension(os.path.split(img_path)[-1], suffix='-res')
     output_path = f'{args.output_dir}/{img_name}'
     os.makedirs(args.output_dir, exist_ok=True)
     print(f'[INFO] Saving the final image at {output_path}')
@@ -86,4 +86,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if os.path.isdir(args.img_path):
+        img_list = os.listdir(args.img_path)
+        print(img_list)
+        for item in img_list:
+            main(os.path.join( args.img_path ,item))
+    else:
+        main(args.img_path)

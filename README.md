@@ -14,7 +14,7 @@ Please follow my GitHub account and star ⭐ the project if this functionality b
 **NOTE**: If you don't have any weights and just want to test, don't change the model-path argument. The yolov5s model will be automatically downloaded thanks to the download function from yolov5. 
 
 **NOTE**: For more input arguments, check out the main.py or run the following command:
-`python main.py -h`
+```python main.py -h```
 
 ## Examples
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pooya-mohammadi/yolov5-gradcam/blob/master/main.ipynb)

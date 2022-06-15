@@ -4,6 +4,9 @@ I constantly desired to know to which part of an object the object-detection mod
 Here is my implementation of Grad-cam for YOLO-v5. To load the model I used the yolov5's main codes, and for computing GradCam I used the codes from the gradcam_plus_plus-pytorch repository.
 Please follow my GitHub account and star ⭐ the project if this functionality benefits your research or projects.
 
+## Update:
+Repo works fine with yolov5-v6.1
+
 
 ## Installation
 `pip install -r requirements.txt`
@@ -26,6 +29,8 @@ Please follow my GitHub account and star ⭐ the project if this functionality b
 
 ## Note
 I checked the code, but I couldn't find an explanation for why the truck's heatmap does not show anything. Please inform me or create a pull request if you find the reason.
+
+This problem is solved in version 6.1
 
 ## TO Do
 1. Add GradCam++

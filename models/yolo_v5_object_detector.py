@@ -29,7 +29,7 @@ class YOLOV5TorchObjectDetector(nn.Module):
         self.confidence = confidence
         self.iou_thresh = iou_thresh
         self.agnostic = agnostic_nms
-        self.model = attempt_load(model_weight, map_location=device)
+        self.model = attempt_load(model_weight, device=device)
         print("[INFO] Model is loaded")
         self.model.requires_grad_(True)
         self.model.to(device)

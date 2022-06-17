@@ -20,6 +20,11 @@ Repo works fine with yolov5-v6.1
 
 ```python main.py -h```
 
+### Custom Name
+To pass in your custom model you might want to pass in your custom names as well, which be done as below:
+```
+python main.py --model-path cutom-model-path.pt --img-path img-path.jpg --output-dir outputs --names obj1,obj2,obj3 
+```
 ## Examples
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pooya-mohammadi/yolov5-gradcam/blob/master/main.ipynb)
 

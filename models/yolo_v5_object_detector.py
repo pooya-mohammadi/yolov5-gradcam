@@ -110,7 +110,9 @@ class YOLOV5TorchObjectDetector(nn.Module):
                 continue
 
             # Compute conf
-            x[:, 5:] *= x[:, 4:5]  # conf = obj_conf * cls_conf
+            obj_conf = x[:, 4:5].clone()
+            cls_conf = x[:, 5:].clone()
+            x[:, 5:] = obj_conf * cls_conf  # conf = obj_conf * cls_conf
             # log_ *= x[:, 4:5]
             # Box (center x, center y, width, height) to (x1, y1, x2, y2)
             box = xywh2xyxy(x[:, :4])
